@@ -560,13 +560,13 @@ func TestGenerateFailedHash(t *testing.T) {
 	tree := NewTree()
 	data := createDummyTreeData(16, 16, true)
 	// Fail hash during the leaf generation
-	err := tree.Generate(data, NewFailingHash())
+	err := tree.GenerateByTwoHashFunc(data, NewSimpleHash(), NewFailingHash())
 	assert.NotNil(t, err)
 	assert.Equal(t, err.Error(), "Failed to write hash")
 
 	// Fail hash during internal node generation
 	data = createDummyTreeData(16, 16, true)
-	err = tree.Generate(data, NewFailingHashAt(20))
+	err = tree.GenerateByTwoHashFunc(data, NewFailingHashAt(7), NewSimpleHash())
 	assert.NotNil(t, err)
 	assert.Equal(t, err.Error(), "Failed to write hash")
 }
