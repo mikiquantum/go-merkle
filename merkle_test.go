@@ -556,7 +556,6 @@ func TestTreeGenerate_DisableHashLeaves_LeftNil(t *testing.T) {
 	assert.Equal(t, expectedHash[:], tree.Root().Hash[:])
 }
 
-
 func TestGenerateNodeHashOfUnbalance(t *testing.T) {
 	tree := Tree{}
 	tree.Options.EnableHashSorting = true
