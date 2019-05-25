@@ -190,10 +190,6 @@ func (self *Tree) generateNode(left, right []byte, h hash.Hash) (Node, error) {
 		data := make([]byte, len(left))
 		copy(data, left)
 		return Node{Hash: data}, nil
-	} else if left == nil {
-		data := make([]byte, len(right))
-		copy(data, right)
-		return Node{Hash: data}, nil
 	}
 
 	data := make([]byte, len(left)+len(right))
